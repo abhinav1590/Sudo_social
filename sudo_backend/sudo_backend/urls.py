@@ -19,10 +19,10 @@ from sudo.views import *
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register('users', UserViewSet)
-router.register('posts', PostViewSet)
-router.register('comments', CommentViewSet)
-router.register('likes', LikeViewSet)
+router.register(r'users', UserViewSet, basename='user')
+router.register(r'posts', PostViewSet,  basename='post')
+router.register(r'posts/(?P<post_id>[^/.]+)/comments', CommentViewSet, basename='comment')
+router.register(r'posts/(?P<post_id>[^/.]+)/likes', LikeViewSet, basename='like')
 
 
 urlpatterns = [
